@@ -1,0 +1,14 @@
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&allowMultiQueries=true&rewriteBatchedStatements=true
+    username: root
+    password: yurui
+
+server:
+  port: 8080
+
+logging:
+  file:
+    path: D:\logs\myBlog

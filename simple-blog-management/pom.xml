@@ -11,5 +11,12 @@
 
     <artifactId>simple-blog-management</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.yr</groupId>
+            <artifactId>simple-blog-dao</artifactId>
+        </dependency>
+
+    </dependencies>
 
 </project>
