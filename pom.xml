@@ -129,6 +129,17 @@
                 <artifactId>fastjson</artifactId>
                 <version> 1.2.54</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>1.5.5.Final</version> <!-- 请确认使用最新版本 -->
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>1.5.5.Final</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

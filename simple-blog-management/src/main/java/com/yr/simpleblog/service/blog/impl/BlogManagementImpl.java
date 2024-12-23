@@ -1,6 +1,5 @@
 package com.yr.simpleblog.service.blog.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.yr.simpleblog.dao.blog.CategoryMapper;
 import com.yr.simpleblog.dao.blog.entity.CategoryDO;
@@ -8,6 +7,7 @@ import com.yr.simpleblog.service.blog.BlogManagement;
 import com.yr.simpleblog.service.blog.bo.req.CategoryQueryReqBO;
 import com.yr.simpleblog.service.blog.bo.req.CategorySaveOrUpdateReqBO;
 import com.yr.simpleblog.service.blog.bo.res.CategoryQueryResBO;
+import com.yr.simpleblog.service.blog.converter.BlogManagementMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -24,12 +24,12 @@ public class BlogManagementImpl implements BlogManagement {
 
     @Override
     public Boolean addCategory(CategorySaveOrUpdateReqBO categorySaveOrUpdateReqBO) {
-        return categoryMapper.insert(JSON.parseObject(JSON.toJSONString(categorySaveOrUpdateReqBO), CategoryDO.class)) == 1;
+        return categoryMapper.insert(BlogManagementMapper.INSTANCE.toCategoryDO(categorySaveOrUpdateReqBO)) == 1;
     }
 
     @Override
     public Boolean updateCategory(CategorySaveOrUpdateReqBO categorySaveOrUpdateReqBO) {
-        return categoryMapper.updateById(JSON.parseObject(JSON.toJSONString(categorySaveOrUpdateReqBO), CategoryDO.class)) == 1;
+        return categoryMapper.updateById(BlogManagementMapper.INSTANCE.toCategoryDO(categorySaveOrUpdateReqBO)) == 1;
     }
 
     @Override
@@ -39,6 +39,6 @@ public class BlogManagementImpl implements BlogManagement {
         if (CollectionUtils.isEmpty(categoryDOList)) {
             return Collections.emptyList();
         }
-        return JSON.parseArray(JSON.toJSONString(categoryDOList), CategoryQueryResBO.class);
+        return BlogManagementMapper.INSTANCE.toCategoryQueryResBOList(categoryDOList);
     }
 }
