@@ -5,6 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+/**
+ * @author yurui
+ * @date 2024-12-23 23:01
+ */
 @TableName("blog_article")
 @Data
 public class ArticleDO {

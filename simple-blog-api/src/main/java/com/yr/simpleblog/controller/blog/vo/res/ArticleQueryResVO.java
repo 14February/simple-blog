@@ -9,7 +9,8 @@ import java.io.Serializable;
  * @date 2024-12-23 23:01
  */
 @Data
-public class CategoryQueryResVO implements Serializable {
+public class ArticleQueryResVO implements Serializable {
     private Long id;
-    private String name;
+    private String title;
+    private String content;
 }

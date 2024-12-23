@@ -9,12 +9,9 @@ import java.io.Serializable;
  * @date 2024-12-23 23:01
  */
 @Data
-public class CategorySaveOrUpdateReqVO implements Serializable {
+public class ArticleSaveOrUpdateReqVO implements Serializable {
     private Long id;
-
-    /**
-     * 分类名称
-     */
-    private String name;
-
+    private Long categoryId;
+    private String title;
+    private String content;
 }

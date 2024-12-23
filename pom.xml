@@ -17,6 +17,7 @@
         <module>simple-blog-external</module>
         <module>simple-blog-msg</module>
         <module>simple-blog-main</module>
+        <module>simple-blog-common</module>
     </modules>
 
     <properties>
@@ -139,6 +140,12 @@
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-processor</artifactId>
                 <version>1.5.5.Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.yr</groupId>
+                <artifactId>simple-blog-common</artifactId>
+                <version>1.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
