@@ -38,6 +38,4 @@ public interface BlogControllerMapper {
 
     @Mapping(source = "dataList", target = "dataList")
     PageRes<ArticleQueryResVO> toArticlePageRes(PageRes<ArticleQueryResBO> articleQueryResBOPageRes);
-
-    ArticleQueryResVO map(ArticleQueryResBO articleQueryResBO);
 }

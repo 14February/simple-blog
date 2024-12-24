@@ -67,7 +67,6 @@ public class BlogManagementImpl implements BlogManagement {
 
     @Override
     public PageRes<ArticleQueryResBO> pageArticle(ArticleQueryReqBO articleQueryReqBO) {
-        // fixme 总数有问题
         Page<ArticleDO> page = articleMapper.selectPage(new Page<>(articleQueryReqBO.getPageIndex(), articleQueryReqBO.getPageSize(), true),
                 new LambdaQueryWrapper<>(ArticleDO.class)
                         .like(ArticleDO::getTitle, articleQueryReqBO.getTitle())
