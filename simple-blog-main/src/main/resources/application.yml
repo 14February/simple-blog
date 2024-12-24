@@ -5,6 +5,12 @@ spring:
     url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&allowMultiQueries=true&rewriteBatchedStatements=true
     username: root
     password: yurui
+  servlet:
+    multipart:
+      # 单文件最大100MB
+      max-file-size: 100MB
+      # 单次请求最大120MB
+      max-request-size: 120MB
 
 mybatis-plus:
   configuration:
@@ -17,5 +23,11 @@ server:
   port: 8080
 
 logging:
+#  level:
+#    org:
+#      springframework:
+#        web:
+#          servlet:
+#            DEBUG
   file:
     path: D:\logs\myBlog

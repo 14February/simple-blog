@@ -1,7 +1,7 @@
 package com.yr.simpleblog.service.blog.converter;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.yr.simpleblog.common.PageRes;
+import com.yr.simpleblog.common.page.PageRes;
 import com.yr.simpleblog.dao.blog.entity.ArticleDO;
 import com.yr.simpleblog.dao.blog.entity.CategoryDO;
 import com.yr.simpleblog.service.blog.bo.req.ArticleSaveOrUpdateReqBO;

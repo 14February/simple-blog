@@ -1,6 +1,6 @@
 package com.yr.simpleblog.service.blog;
 
-import com.yr.simpleblog.common.PageRes;
+import com.yr.simpleblog.common.page.PageRes;
 import com.yr.simpleblog.service.blog.bo.req.ArticleQueryReqBO;
 import com.yr.simpleblog.service.blog.bo.req.ArticleSaveOrUpdateReqBO;
 import com.yr.simpleblog.service.blog.bo.req.CategoryQueryReqBO;

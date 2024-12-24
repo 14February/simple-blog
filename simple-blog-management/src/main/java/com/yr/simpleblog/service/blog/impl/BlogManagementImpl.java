@@ -2,7 +2,7 @@ package com.yr.simpleblog.service.blog.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.yr.simpleblog.common.PageRes;
+import com.yr.simpleblog.common.page.PageRes;
 import com.yr.simpleblog.dao.blog.ArticleMapper;
 import com.yr.simpleblog.dao.blog.CategoryMapper;
 import com.yr.simpleblog.dao.blog.entity.ArticleDO;

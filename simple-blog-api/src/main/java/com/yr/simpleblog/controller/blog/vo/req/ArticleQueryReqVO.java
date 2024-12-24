@@ -1,6 +1,6 @@
 package com.yr.simpleblog.controller.blog.vo.req;
 
-import com.yr.simpleblog.common.PageReq;
+import com.yr.simpleblog.common.page.PageReq;
 import lombok.Data;
 
 import java.io.Serializable;

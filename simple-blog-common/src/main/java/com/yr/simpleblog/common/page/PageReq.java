@@ -1,4 +1,4 @@
-package com.yr.simpleblog.common;
+package com.yr.simpleblog.common.page;
 
 import lombok.Data;
 

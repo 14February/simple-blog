@@ -1,6 +1,6 @@
 package com.yr.simpleblog.controller.blog;
 
-import com.yr.simpleblog.common.PageRes;
+import com.yr.simpleblog.common.page.PageRes;
 import com.yr.simpleblog.controller.blog.converter.BlogControllerMapper;
 import com.yr.simpleblog.controller.blog.vo.req.ArticleQueryReqVO;
 import com.yr.simpleblog.controller.blog.vo.req.ArticleSaveOrUpdateReqVO;

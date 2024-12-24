@@ -1,5 +1,5 @@
 package com.yr.simpleblog.controller.blog.converter;
-import com.yr.simpleblog.common.PageRes;
+import com.yr.simpleblog.common.page.PageRes;
 import com.yr.simpleblog.controller.blog.vo.req.ArticleQueryReqVO;
 import com.yr.simpleblog.controller.blog.vo.req.ArticleSaveOrUpdateReqVO;
 import com.yr.simpleblog.controller.blog.vo.req.CategoryQueryReqVO;
