@@ -19,7 +19,7 @@ public class FileUploadResVO implements Serializable {
      */
     private String filePath;
     /**
-     * 文件大小
+     * 文件大小|单位:字节|
      */
     private Long fileSize;
     /**
