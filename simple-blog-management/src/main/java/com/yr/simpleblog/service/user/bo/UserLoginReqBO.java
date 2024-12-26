@@ -1,4 +1,4 @@
-package com.yr.simpleblog.controller.user.vo.req;
+package com.yr.simpleblog.service.user.bo;
 
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @date 2024-12-25 23:20
  */
 @Data
-public class UserLoginReqVO implements Serializable {
+public class UserLoginReqBO implements Serializable {
     private String name;
     private String email;
     private String phone;

@@ -1,15 +1,14 @@
-package com.yr.simpleblog.controller.user.vo.req;
+package com.yr.simpleblog.service.user.bo;
 
 import lombok.Data;
 
-import java.io.Serializable;
-
 /**
  * @author yurui
- * @date 2024-12-25 23:20
+ * @date 2024-12-26 12:36
  */
 @Data
-public class UserLoginReqVO implements Serializable {
+public class UserRegisterReqBO {
+    private String accountId;
     private String name;
     private String email;
     private String phone;
