@@ -1,6 +1,7 @@
 package com.yr.simpleblog.service.user.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.yr.simpleblog.common.exception.BizException;
 import com.yr.simpleblog.dao.user.UserMapper;
 import com.yr.simpleblog.dao.user.entity.UserDO;
 import com.yr.simpleblog.service.user.UserManagement;
@@ -34,12 +35,12 @@ public class UserManagementImpl implements UserManagement {
     public String login(UserLoginReqBO userLoginReqBO) {
         // 1. 判断用户名和密码的正确性
         List<UserDO> userDOList = userMapper.selectList(new LambdaQueryWrapper<UserDO>()
-                .eq(UserDO::getName, userLoginReqBO.getName())
-                .eq(UserDO::getEmail, userLoginReqBO.getEmail())
-                .eq(UserDO::getPhone, userLoginReqBO.getPhone())
-                .eq(UserDO::getPassword, userLoginReqBO.getPassword()));
+                .eq(userLoginReqBO.getName() != null, UserDO::getName, userLoginReqBO.getName())
+                .eq(userLoginReqBO.getEmail() != null, UserDO::getEmail, userLoginReqBO.getEmail())
+                .eq(userLoginReqBO.getPhone() != null, UserDO::getPhone, userLoginReqBO.getPhone())
+                .eq(userLoginReqBO.getPassword() != null, UserDO::getPassword, userLoginReqBO.getPassword()));
         if (CollectionUtils.isEmpty(userDOList)) {
-            throw new RuntimeException("用户名或密码不正确");
+            throw new BizException("user_000002", "用户名或密码不正确");
         }
         UserBO userBO = UserManagementMapper.INSTANCE.toUserBO(userDOList.get(0));
         String token = UUID.randomUUID().toString();
@@ -55,7 +56,7 @@ public class UserManagementImpl implements UserManagement {
                 .eq(UserDO::getEmail, userRegisterReqBO.getEmail())
                 .eq(UserDO::getPhone, userRegisterReqBO.getPhone()));
         if (!CollectionUtils.isEmpty(userDOList)) {
-            throw new RuntimeException("用户已注册");
+            throw new BizException("user_000001", "用户已注册");
         }
         // 2. 注册
         userRegisterReqBO.setAccountId(UUID.randomUUID().toString().replace("-", ""));

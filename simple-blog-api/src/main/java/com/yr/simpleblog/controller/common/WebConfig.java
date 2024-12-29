@@ -2,10 +2,15 @@ package com.yr.simpleblog.controller.common;
 
 import com.yr.simpleblog.common.utils.FileUtils;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
+/**
+ * @author yurui
+ * @date 2024-12-28 00:09
+ */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
@@ -20,5 +25,21 @@ public class WebConfig implements WebMvcConfigurer {
         // 这里访问路径必须和文件系统中的路径一样，如果需要动态查询file指定目录下的子目录，需要手写controller来处理
         registry.addResourceHandler("/uploads/**")
             .addResourceLocations("file:" + FileUtils.getFilePath() + "/");
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        // 所有路径都支持跨域
+        registry.addMapping("/**")
+                // 允许来自 http://localhost:3000 的跨域请求
+                .allowedOrigins("http://localhost:5173")
+                // 允许的 HTTP 方法
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                // 允许所有的请求头
+                .allowedHeaders("*")
+                // 允许发送凭据（cookies）
+                .allowCredentials(true)
+                // 预检请求的缓存时间，单位秒
+                .maxAge(3600);
     }
 }

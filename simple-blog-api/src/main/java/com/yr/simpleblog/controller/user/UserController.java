@@ -1,6 +1,7 @@
 package com.yr.simpleblog.controller.user;
 
 import com.yr.simpleblog.controller.TokenUtils;
+import com.yr.simpleblog.controller.common.ApiResponseResVO;
 import com.yr.simpleblog.controller.user.converter.UserControllerMapper;
 import com.yr.simpleblog.controller.user.vo.req.UserLoginReqVO;
 import com.yr.simpleblog.controller.user.vo.req.UserRegisterReqVO;
@@ -31,27 +32,30 @@ public class UserController {
     private HttpServletRequest httpServletRequest;
 
     @PostMapping("/register")
-    public void register(@RequestBody UserRegisterReqVO userRegisterReqVO) {
+    public ApiResponseResVO register(@RequestBody UserRegisterReqVO userRegisterReqVO) {
+
         userManagement.register(UserControllerMapper.INSTANCE.toUserRegisterReqBO(userRegisterReqVO));
+        return ApiResponseResVO.success(null);
     }
 
     @PostMapping("/login")
-    public void login(@RequestBody UserLoginReqVO userLoginReqVO) {
+    public ApiResponseResVO login(@RequestBody UserLoginReqVO userLoginReqVO) {
         String token = userManagement.login(UserControllerMapper.INSTANCE.toUserLoginReqBO(userLoginReqVO));
         TokenUtils.addToken(httpServletResponse, token);
+        return ApiResponseResVO.success(null);
     }
 
     @GetMapping("/current/get")
-    public UserResVO getCurrentUser() {
+    public ApiResponseResVO<UserResVO> getCurrentUser() {
         String token = TokenUtils.getValueFromCookie(httpServletRequest, "token");
         if (token == null) {
-            return null;
+            return ApiResponseResVO.fail("user_000003", "用户未登录");
         }
         UserBO userBO = userManagement.getCurrentUser(token);
         if (userBO == null) {
-            return null;
+            return ApiResponseResVO.fail("user_000003", "用户未登录");
         }
-        return UserControllerMapper.INSTANCE.toUserResVO(userBO);
+        return ApiResponseResVO.success(UserControllerMapper.INSTANCE.toUserResVO(userBO));
     }
 
 

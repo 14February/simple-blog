@@ -23,5 +23,11 @@ public interface UserManagement {
      */
     void register(UserRegisterReqBO userRegisterReqBO);
 
+    /**
+     * 获取当前登录用户
+     *
+     * @param token token
+     * @return 当前登录用户
+     */
     UserBO getCurrentUser(String token);
 }
