@@ -48,7 +48,7 @@ public class BlogManagementImpl implements BlogManagement {
     @Override
     public List<CategoryQueryResBO> queryCategory(CategoryQueryReqBO categoryQueryReqBO) {
         List<CategoryDO> categoryDOList = categoryMapper.selectList(new LambdaQueryWrapper<>(CategoryDO.class)
-                .like(CategoryDO::getName, categoryQueryReqBO.getName()));
+                .like(categoryQueryReqBO.getName() != null, CategoryDO::getName, categoryQueryReqBO.getName()));
         if (CollectionUtils.isEmpty(categoryDOList)) {
             return Collections.emptyList();
         }
@@ -69,8 +69,10 @@ public class BlogManagementImpl implements BlogManagement {
     public PageRes<ArticleQueryResBO> pageArticle(ArticleQueryReqBO articleQueryReqBO) {
         Page<ArticleDO> page = articleMapper.selectPage(new Page<>(articleQueryReqBO.getPageIndex(), articleQueryReqBO.getPageSize(), true),
                 new LambdaQueryWrapper<>(ArticleDO.class)
-                        .like(ArticleDO::getTitle, articleQueryReqBO.getTitle())
-                        .like(ArticleDO::getContent, articleQueryReqBO.getContent()));
+                        .like(articleQueryReqBO.getTitle() != null, ArticleDO::getTitle, articleQueryReqBO.getTitle())
+                        .like(articleQueryReqBO.getContent() != null, ArticleDO::getContent, articleQueryReqBO.getContent())
+                        .eq(ArticleDO::getIsDelete, 0)
+                        .eq(articleQueryReqBO.getId() != null, ArticleDO::getId, articleQueryReqBO.getId()));
         if (page == null) {
             return PageRes.initPage(articleQueryReqBO);
         }

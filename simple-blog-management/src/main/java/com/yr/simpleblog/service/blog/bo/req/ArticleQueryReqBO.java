@@ -19,4 +19,6 @@ public class ArticleQueryReqBO extends PageReq implements Serializable {
      * 内容
      */
     private String content;
+
+    private Long id;
 }

@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @author yurui
  * @date 2024-12-23 23:01
@@ -17,4 +19,6 @@ public class ArticleDO {
     private Long categoryId;
     private String title;
     private String content;
+    private Date createTime;
+    private Integer isDelete;
 }
